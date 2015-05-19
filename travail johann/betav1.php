@@ -29,22 +29,35 @@ function myget_repo($name_orga)
 
 function get_nbr_contrib($tab)
 {
-	$weeks =  array('a' => 0, 'd' => 0, 'c' => 0, 'w', 'total' => 0);
+	$weeks = array();
+	$first = true;
 	for ($i = 0; $i < count($tab); $i++)
 	{
 		$parsed_json = json_decode(my_get_json("repos/$tab[$i]/stats/contributors?access_token=a6f162fe9dd5745cfaa1e387321b3ce59ede3a27"),true);
 		$nbr_total_semaine = 0;
-		for($k = 0; $k < count($parsed_json); $k++)
+		for($j = 0; $j < count($parsed_json); $j++)
 		{
-			$weeks['a'] = $weeks['a'] + $parsed_json[$k]['weeks'][0]['a'];
-			$weeks['d'] = $weeks['d'] + $parsed_json[$k]['weeks'][0]['d'];
-			$weeks['c'] = $weeks['c'] + $parsed_json[$k]['weeks'][0]['c'];
-			$weeks['w'] = date('l d/m/y', $parsed_json[$k]['weeks'][0]['w']);
-			$weeks['total'] = $weeks['total'] + $parsed_json[$k]['total'];
+			for($k = 0; $k < count($parsed_json[$j]['weeks']); $k++)
+			{
+				$date = $parsed_json[$j]['weeks'][$k]['w'];
+				if (!isset($date))
+				{
+					$weeks[$date]['a'] = $weeks[$date]['a'] + $parsed_json[$j]['weeks'][$k]['a'];
+					$weeks[$date]['d'] = $weeks[$date]['d'] + $parsed_json[$j]['weeks'][$k]['d'];
+					$weeks[$date]['c'] = $weeks[$date]['c'] + $parsed_json[$j]['weeks'][$k]['c'];
+				}
+				else
+				{
+					$weeks[$date]['a'] = $parsed_json[$j]['weeks'][$k]['a'];
+					$weeks[$date]['d'] = $parsed_json[$j]['weeks'][$k]['d'];
+					$weeks[$date]['c'] = $parsed_json[$j]['weeks'][$k]['c'];
+				}
+			}
+			$first = false;
 		}
-		/*test
-		echo "la semaine du {$weeks['w']}, vous avez effectuer {$weeks['a']} ajout(s), {$weeks['d']} supression et {$weeks['c']} commit <br/>";*/
+		/*test*/
 	}
+	var_dump($weeks);
 }
 
 function get_info_by_organization($user) {
