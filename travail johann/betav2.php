@@ -17,7 +17,7 @@ function my_get_json($url){
 
 function myget_repo($name_orga)
 {
-	$parsed_json = json_decode(my_get_json("orgs/$name_orga/repos?access_token=a6f162fe9dd5745cfaa1e387321b3ce59ede3a27"),true);
+	$parsed_json = json_decode(my_get_json("orgs/$name_orga/repos?access_token= 2e1d133ae48a12407310fce4bc65d1da06866b80"),true);
 	$i = 0;
 	while (isset($parsed_json[$i]['full_name']))
 	{
@@ -63,7 +63,7 @@ function get_code_frequency($tab)
 	$weeks = array();
 	for ($i = 0; $i < count($tab); $i++)
 	{
-		$parsed_json = json_decode(my_get_json("repos/$tab[$i]/stats/code_frequency?access_token=a6f162fe9dd5745cfaa1e387321b3ce59ede3a27"),true);
+		$parsed_json = json_decode(my_get_json("repos/$tab[$i]/stats/code_frequency?access_token= a2a66ad70a776c8c6d0d58c36b953dbeac23eb5f"),true);
 		for($j = 0; $j < count($parsed_json); $j++)
 		{
 			$date = $parsed_json[$j][0];
