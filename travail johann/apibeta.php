@@ -20,15 +20,18 @@ function get_nbr_contrib($full_name)
 	echo "nom complet: $full_name<br/>";
 	$parsed_json = json_decode(my_get_json("repos/$full_name/stats/contributors?access_token=a6f162fe9dd5745cfaa1e387321b3ce59ede3a27"),true);
 	//test
-	var_dump($parsed_json);
+	//var_dump($parsed_json);
 	$nbr_total_semaine = 0;
-	$weeks = array();
+	$weeks = array('a' => 0 'd' => 0, 'c' => 0, 'w');
 	for($i = 0; $i < count($parsed_json); $i++)
 		for($j = 0; $i < count($weeks); $j++)
 		{
-			$date = date('l d/m/y', $weeks[$i]['w']);
-			echo "la semaine du {$date}, vous avez effectuer {$weeks[$i]['a']} ajout(s), {$weeks[$i]['d']} supression et {$weeks[$i]['c']} commit <br/>";
+			$weeks['a'] = $weeks['a'] + $parsed_json[$i]['weeks'][$j]['a'];
+			$weeks['d'] = $weeks['d'] + $parsed_json[$i]['weeks'][$j]['d'];
+			$weeks['c'] = $weeks['c'] + $parsed_json[$i]['weeks'][$j]['d'];
+			$weeks['w'] = date('l d/m/y', $weeks[$i]['w']);
 		}
+		echo "la semaine du {$weeks['w']}, vous avez effectuer {$weeks['a']} ajout(s), {$weeks['d']} supression et {$weeks['c']} commit <br/>";
 	}
 }
 
