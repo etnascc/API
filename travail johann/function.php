@@ -78,12 +78,44 @@ function myget_punch_card($tab)
 		while (isset($parsed_json[$k]))
 		{
 
-				$tab_punch[$k][2] = $tab_punch[$k][2] + $parsed_json[$k][2];
+			$tab_punch[$k][2] = $tab_punch[$k][2] + $parsed_json[$k][2];
 			$k++;
 		}
 		$i++;
 	}
 	return ($tab_punch);
+}
+
+function myget_participation($tab)
+{
+	$length = count($tab);
+	$i = 0;
+	$tab_parti = null;
+	while ($i < $length)
+	{
+		$parsed_json = json_decode(my_get_json("repos/$tab[$i]/stats/participation?access_token=ea0723fa28d6dde7ccfd7a9b46c457398ca8685a"),true);
+		if (!isset($tab_parti))
+		{
+			$tab_parti = $parsed_json;
+			$i++;
+			$parsed_json = json_decode(my_get_json("repos/$tab[$i]/stats/participation?access_token=ea0723fa28d6dde7ccfd7a9b46c457398ca8685a"),true);
+		}
+
+			$j=0;
+			while(isset($parsed_json['all'][$j]))
+			{
+				$tab_parti['all'][$j] = $parsed_json['all'][$j] +  $tab_parti['all'][$j];
+				$j++;
+			}
+			$j = 0;
+			while(isset($parsed_json['owner'][$j]))
+			{
+				$tab_parti['owner'][$j] = $parsed_json['owner'][$j] +  $tab_parti['owner'][$j];
+				$j++;
+			}
+		$i++;
+	}
+	return ($tab_parti);
 }
 
 function get_info_by_organization($user) {
@@ -95,8 +127,10 @@ function get_info_by_organization($user) {
 	if ($parsed_json['rate']['remaining'] != 0)
 	{
 		$repos_orgarnization = myget_repo($user);
-		var_dump(myget_commit_activity($repos_orgarnization));
-		var_dump(myget_punch_card($repos_orgarnization));
+		//var_dump(myget_commit_activity($repos_orgarnization));
+		//var_dump(myget_punch_card($repos_orgarnization));
+		var_dump(myget_participation($repos_orgarnization));
+		
 	}
 	else
 	{
