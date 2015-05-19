@@ -17,7 +17,7 @@ function my_get_json($url){
 
 function myget_repo($name_orga)
 {
-	$parsed_json = json_decode(my_get_json("orgs/$name_orga/repos?access_token= 2e1d133ae48a12407310fce4bc65d1da06866b80"),true);
+	$parsed_json = json_decode(my_get_json("orgs/$name_orga/repos?access_token=864c7603a908717989fdea759e7c46b7048e080b"),true);
 	$i = 0;
 	while (isset($parsed_json[$i]['full_name']))
 	{
@@ -63,7 +63,7 @@ function get_code_frequency($tab)
 	$weeks = array();
 	for ($i = 0; $i < count($tab); $i++)
 	{
-		$parsed_json = json_decode(my_get_json("repos/$tab[$i]/stats/code_frequency?access_token= a2a66ad70a776c8c6d0d58c36b953dbeac23eb5f"),true);
+		$parsed_json = json_decode(my_get_json("repos/$tab[$i]/stats/code_frequency?access_token=aa7de7b2dbde85ccba017cd41a271560f0c1b4b0"),true);
 		for($j = 0; $j < count($parsed_json); $j++)
 		{
 			$date = $parsed_json[$j][0];
@@ -93,7 +93,7 @@ function get_info_by_organization($user) {
 		//var_dump($repos_orgarnization[$i]['full_name']);
 		get_nbr_contrib($repos_orgarnization);
 		//get_nbr_commit($repos_orgarnization[$i]['full_name']);
-		//get_code_frequency($repos_orgarnization);
+		get_code_frequency($repos_orgarnization);
 		//get_participation($repos_orgarnization[$i]['full_name']);
 	}
 	else
