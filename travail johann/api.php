@@ -17,7 +17,7 @@ function my_get_json($url){
 
 function get_nbr_contrib($full_name)
 {
-	echo "nom complet: $full_name<br/>";
+	echo "Organisation: $full_name<br/>";
 	$parsed_json = json_decode(my_get_json("repos/$full_name/stats/contributors?access_token=a6f162fe9dd5745cfaa1e387321b3ce59ede3a27"),true);
 	//test
 	//var_dump($parsed_json[0]);
