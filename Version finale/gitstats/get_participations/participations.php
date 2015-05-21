@@ -1,6 +1,5 @@
 <?php
 session_start();
-// content="text/plain; charset=utf-8"
 require_once ('../jpgraph/src/jpgraph.php');
 require_once ('../jpgraph/src/jpgraph_line.php');
 include ("../betav3.php");
@@ -11,7 +10,7 @@ $parsed_json = json_decode(my_get_json("rate_limit?access_token=a6f162fe9dd5745c
 	if ($parsed_json['rate']['remaining'] != 0)
 	{
 		$repos_orgarnization = my_get_repo($_SESSION['orga']);
-		//test
+	
 
 		$weeks = get_participation($repos_orgarnization);
 	}
@@ -30,14 +29,6 @@ $parsed_json = json_decode(my_get_json("rate_limit?access_token=a6f162fe9dd5745c
  	$datay2[] = $weeks['all'][$i];
  }
  
-
-
-
-
-
-// $datay1 = array(20,7,16,46);
-// $datay2 = array(6,20,10,22);
-
 // Setup the graph
 $graph = new Graph(1000,550);
 $graph->SetScale("textlin");
@@ -52,9 +43,7 @@ $graph->yaxis->HideZeroLabel();
 $graph->yaxis->HideLine(false);
 $graph->yaxis->HideTicks(false,false);
 
-// $graph->xaxis->SetTickLabels(array('','','',''));
 $graph->ygrid->SetFill(false);
-// $graph->SetBackgroundImage("logogit.png",BGIMG_FILLFRAME);
 
 $p1 = new LinePlot($datay1);
 $graph->Add($p1);
