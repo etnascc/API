@@ -6,8 +6,6 @@ require_once("../jpgraph/src/jpgraph_line.php");
 require_once("../jpgraph/src/jpgraph_bar.php");
 include ("../betav3.php");
 
-// $donnees = array(12,23,9,58,23,26,57,48,12);
-#modif
 $parsed_json = json_decode(my_get_json("rate_limit?access_token=a6f162fe9dd5745cfaa1e387321b3ce59ede3a27"),true);
 	if ($parsed_json['rate']['remaining'] != 0)
 	{
@@ -40,8 +38,7 @@ $graphe->add($histo);
 
 // Creation de la courbe
 $courbe = new LinePlot($donnees);
-// Ajout de la courbe au graphique
-// $graphe->add($courbe);
+
 
 // Ajout du titre du graphique
 $graphe->title->set("Les Commits par semaines effectués sur un an : ");
