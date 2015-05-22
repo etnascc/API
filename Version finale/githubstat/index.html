@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Acceuil</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="./css/main.css" rel="stylesheet" />
+        <link rel="stylesheet" href='./css/bootstrap.css'>
+    </head>
+    <body>
+        <main>
+            <div id="my_menu" class="container col-lg-12">
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-7 col-lg-offset-2">
+                        <FORM NAME="formapplication" ACTION="./ressources/cible.php" METHOD="POST">
+							<TABLE>
+								<TR>
+									<TD>
+									Organisation :
+									</TD>
+									<TD>
+									<INPUT TYPE="TEXT" NAME="organisation" required>
+									</TD>
+								</TR>
+								<TR>
+									<TD><INPUT TYPE=reset VALUE="Effacer"></TD>
+									<TD><INPUT TYPE=submit></TD>
+								</TR>
+							</TABLE>
+						</FORM>
+                    </div>
+                </div>
+            </div>
+            <br/><br/>
+            <h4 class="text-center">GitHubStats.</h4>
+            <br/><br/>
+            <div class=" container row-lg-4 col-lg-pull-1">
+                <p>
+                    &emsp;Sur GitHub, les stats de projet sont souvent utilisées par les différents collaborateurs pour suivre l'évolution du projet, on peut facilement voir qui
+					participe le plus, quelle est la fréquence des commits, observer les ajouts et délétions dans le code etc...
+                </p>
+                <p>
+                    &emsp;Le but du défi est d'étendre ces stats à une organisation. Ainsi, il sera possible l'aide d'une application Web de regrouper
+					les statistiques (commits, ajouts, délétions, participations, punch cards) de l'ensemble des projets du groupe, également de pouvoir observer des statistiques concernant les Pull-Requests en cours. 
+					Le tout visible sous forme de graphe. GitHub Stats permet une meilleur gestion des étapes de la réalisation et d'organisation d'un projet au sein d'une organisation.
+                </p>
+            </div>
+            <div id="carousel-testimonial" class="carousel slide"
+                 data-ride="carousel">
+                <div class="carousel-inner testimonial" 
+                     style="background-image:url(./img/testo.jpg);">
+                    <div class="item active">
+                        <div class="unit">
+                            <h3>Une excellente equipe avec qui je n'hésiterai
+                                pas à retravailler.</h3>
+                            <div></div>
+                            <p class="byline">- Rocket Singh, Rocket Corp</p>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="unit unit-2">
+                            <h3>Il n'y a pas meilleur comme equipe.</h3>
+                            <div></div>
+                            <p class="byline">- Mike, Bread Inc</p>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="unit unit-3">
+                            <h3>Like a boss !!!</h3>
+                            <div></div>
+                            <p class="byline">- Nik, TCB</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <footer>
+            <div class="container" id="my_footer">
+            </div>
+            <script type="text/javascript" src="./js/jquery.min.js"></script>
+            <script type="text/javascript" src="./js/bootstrap.min.js"></script>
+            <script type="text/javascript" src="./js/scripts.js"></script>
+        </footer>
+    </body>
+</html>
