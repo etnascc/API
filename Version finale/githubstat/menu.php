@@ -20,6 +20,9 @@ session_start();
                     <div class="col-lg-10 col-lg-offset-1">
 						<H1>Statistiques disponibles</H1>
 						<p align="justify">
+							<H4>Veullez selectionner votre graphique.</h4>
+						</p>
+						<p align="justify">
 							Afficher le graphique qui donne le nombre de commit sur la derniere annee
 							<A HREF="./ressources/get_comit_activity/histo_f2.php"><input type="button" value="Comit activity"></A>
 						</p>
